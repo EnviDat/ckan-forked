@@ -1,6 +1,11 @@
 /*
 Version: 3.5.4 Timestamp: Sun Aug 30 13:30:32 EDT 2015
 */
+
+#s2id_field-tag_string {
+    display: contents;
+}
+
 .select2-container {
     margin: 0;
     position: relative;
@@ -690,3 +695,4 @@ html[dir="rtl"] .select2-container-multi .select2-search-choice-close {
         background-position: 100% -21px !important;
     }
 }
+
