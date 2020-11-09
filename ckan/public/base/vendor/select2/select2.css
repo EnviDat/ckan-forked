@@ -2,9 +2,24 @@
 Version: 3.5.4 Timestamp: Sun Aug 30 13:30:32 EDT 2015
 */
 
+
 #s2id_field-tag_string {
-    display: contents;
+    border: 0px solid #ccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); 
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    color: white;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08);
+    bottom: 10px;
+    padding-left: 0px;
+    top: 0px;
+    height: auto;
+
+    padding-top: 0px; 
+    padding-right: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }
+
 
 .select2-container {
     margin: 0;
