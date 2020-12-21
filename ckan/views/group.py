@@ -1107,7 +1107,6 @@ class MembersGroupView(MethodView):
         return h.redirect_to(u'{}.members'.format(group_type), id=id)
 
     def get(self, group_type, is_organization, id=None):
-        extra_vars = {}
         set_org(is_organization)
         context = self._prepare(id)
         user = request.params.get(u'user')
@@ -1123,8 +1122,8 @@ class MembersGroupView(MethodView):
                 authz.users_role_for_group_or_org(id, user) or u'member'
             # TODO: Remove
             g.user_dict = user_dict
-            extra_vars["user_dict"] = user_dict
         else:
+            user_dict = None
             user_role = u'member'
 
         # TODO: Remove
@@ -1138,6 +1137,10 @@ class MembersGroupView(MethodView):
             u"user_role": user_role,
             u"group_type": group_type
         }
+
+        if user_dict:
+            extra_vars["user_dict"] = user_dict
+
         return base.render(_replace_group_org(u'group/member_new.html'),
                            extra_vars)
 
