@@ -7,6 +7,7 @@ import cgitb
 import warnings
 import xml.dom.minidom
 
+import base64
 import requests
 
 import ckan.model as model
@@ -257,13 +258,13 @@ def _get_schema_from_solr(file_offset):
     http_auth = None
     if solr_user is not None and solr_password is not None:
         http_auth = solr_user + ':' + solr_password
-        http_auth = 'Basic ' + http_auth.encode('base64').strip()
+        http_auth = base64.b64encode(bytes(http_auth, "utf-8")).decode()
 
     url = solr_url.strip('/') + file_offset
 
     if http_auth:
         response = requests.get(
-            url, headers={'Authorization': http_auth})
+            url, headers={'Authorization': 'Basic {0}'.format(http_auth)})
     else:
         response = requests.get(url)
 
